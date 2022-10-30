@@ -1,0 +1,42 @@
+module i2c(clk,
+           reset,
+           avalon_chipselect,
+           avalon_address,
+           avalon_write,
+           avalon_writedata,
+           avalon_read,
+           avalon_readdata,
+           chipselect,
+			  address,
+           read,
+           readdata,
+           write,
+           writedata,
+           I2C_SCL,
+           I2C_SDA,
+           I2C_TEST_OUT);
+
+
+    input   clk, reset;
+    
+
+    // Avalon MM interface (8 word aperature)
+    input             avalon_chipselect,avalon_read,avalon_write;
+    input [2:0]       avalon_address;
+    input [31:0]      avalon_writedata;
+    output reg [31:0] avalon_readdata;
+    output            chipselect,read,write;
+    output [1:0]      address;   
+    output [4:0]      writedata;  
+    output [4:0]      readdata;	 
+         
+           
+    
+    // gpio interface
+    //inout reg [31:0]  data;
+    output I2C_SCL;
+    output I2C_SDA;
+    output I2C_TEST_OUT;
+
+
+endmodule
