@@ -96,26 +96,26 @@ module i2c(clk,
     always @ (*)
     begin
         if (avalon_read &&  avalon_chipselect)
-		  begin
+	begin
             case (avalon_address)
                ADDRESS_REG: 
                   avalon_readdata = int_address;
                DATA_REG: 
-					   begin
-					    read_edge       = 1'b1;
-                   avalon_readdata = rd_data;
-						end
+		begin
+	        read_edge       = 1'b1;
+                avalon_readdata = rd_data;
+		end
                STATUS_REG:
                   avalon_readdata = rd_status;
                CONTROL_REG:
                   avalon_readdata = control;
             endcase
-		   end
+	 end
          else
-		   begin
-            avalon_readdata = 32'b0;
-				read_edge       = 1'b0;
-			end
+         begin
+         avalon_readdata = 32'b0;
+	 read_edge       = 1'b0;
+	end
     end        
 
     // write register 
@@ -125,8 +125,8 @@ module i2c(clk,
         begin
             int_address[6:0]       <= 7'b0;
             data[7:0]              <= 8'b0;
-		      status[31:0]           <= 32'b0;
-		      control[31:0]          <= 32'b0;
+	    status[31:0]           <= 32'b0;
+            control[31:0]          <= 32'b0;
         end
         else
         begin
@@ -136,18 +136,18 @@ module i2c(clk,
                      ADDRESS_REG: 
                        int_address  <= avalon_writedata;
                      DATA_REG: 
-							  begin
+		      begin
                         data         <= avalon_writedata;
-							   write_edge   <= 1'b1; s
-							  end
+	                write_edge   <= 1'b1; 
+		      end
                      STATUS_REG:
                        status       <= avalon_writedata;
                      CONTROL_REG:
                        control      <= avalon_writedata;
                 endcase
             end
-				else 
-				  write_edge   <= 1'b0;
+	  else 
+	  write_edge   <= 1'b0;
         end
     end
 
