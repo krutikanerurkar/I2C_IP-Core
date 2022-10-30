@@ -1,6 +1,6 @@
 // I2C IP Example
 // I2C IP Library (i2c_ip.c)
-// JCason Losh
+// Krutika Nerurkar
 
 //-----------------------------------------------------------------------------
 // Hardware Target
@@ -8,12 +8,9 @@
 
 // Target Platform: DE1-SoC Board
 
-// Hardware configuration:
-// GPIO Port:
-//   GPIO_1[31-0] is used as a general purpose GPIO port
+
 // HPS interface:
 //   Mapped to offset of 0 in light-weight MM interface aperature
-//   IRQ80 is used as the interrupt interface to the HPS
 
 //-----------------------------------------------------------------------------
 
